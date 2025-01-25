@@ -1,0 +1,34 @@
+<h2>Управление заявками</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Адрес</th>
+        <th>Телефон</th>
+        <th>Тип услуги</th>
+        <th>Дата и время</th>
+        <th>Статус</th>
+        <th>Действие</th>
+    </tr>
+    {{#each orders}}
+    <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.address}}</td>
+        <td>{{this.phone}}</td>
+        <td>{{this.service_type}}</td>
+        <td>{{this.preferred_date}}</td>
+        <td>{{this.status}}</td>
+        <td>
+            <form action="/orders/update" method="POST">
+                <input type="hidden" name="order_id" value="{{this.id}}">
+                <select name="status">
+                    <option value="в работе">В работе</option>
+                    <option value="выполнено">Выполнено</option>
+                    <option value="отменено">Отменено</option>
+                </select>
+                <input type="text" name="cancel_reason" placeholder="Причина отмены">
+                <button type="submit">Обновить</button>
+            </form>
+        </td>
+    </tr>
+    {{/each}}
+</table>

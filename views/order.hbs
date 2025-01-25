@@ -1,0 +1,23 @@
+<h2>Создать заявку</h2>
+<form action="/orders/create" method="POST">
+    <input type="hidden" name="user_id" value="1">
+    <input type="text" name="address" placeholder="Адрес" required>
+    <input type="text" name="phone" placeholder="+7(XXX)-XXX-XX-XX" required>
+
+    <select name="service_type" required>
+        <option value="Общий клининг">Общий клининг</option>
+        <option value="Генеральная уборка">Генеральная уборка</option>
+        <option value="Послестроительная уборка">Послестроительная уборка</option>
+        <option value="Химчистка ковров и мебели">Химчистка ковров и мебели</option>
+        <option value="Иная услуга">Иная услуга</option>
+    </select>
+
+    <textarea name="custom_service" placeholder="Опишите услугу (если выбрано 'Иная услуга')"></textarea>
+
+    <input type="datetime-local" name="preferred_date" required>
+
+    <label><input type="radio" name="payment_method" value="Наличные" required> Наличные</label>
+    <label><input type="radio" name="payment_method" value="Банковская карта" required> Банковская карта</label>
+
+    <button type="submit">Отправить заявку</button>
+</form>
